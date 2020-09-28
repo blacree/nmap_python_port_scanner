@@ -1,3 +1,6 @@
+Note: It is illegal to scan a computer not owned by you, unless given explicit permission to do so.
+
+
 # nmap_python_port_scanner
 The python script helps to scan the port of a target, return the port status and much more.
 Nmap scanner is a very powerful scanner. It returns comprehensively almost all information you need to know of your target client. It also has the ability to determine if a port is being filtered by a firewall of which it returns the port status as filtered; and much more features.
