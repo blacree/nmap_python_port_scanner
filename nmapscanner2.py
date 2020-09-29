@@ -48,7 +48,8 @@ def nmapscanner(ip_address, port):
 		#print()
 		#print(nmapscan[ip_address]['tcp'][int(port)]['state'])
 	except:
-		print('[-]Target '+ ip_address + ' is Dead.')
+		#print('[-]Target '+ ip_address + ' is Dead.')
+		print('[-]Error during scanning. Exiting...')
 		#print('[-]Port:' + str(port) + ' for client:' + ip_address+ ' is closed.' )
 
 
@@ -57,7 +58,7 @@ def main():
 	parser = optparse.OptionParser('-a <hostname/hostname> -p <port>')
 	parser.add_option('-a', type='string', dest='ipaddress', help='Enter a valid ip-address')
 	parser.add_option('-p', type='string', dest='port', help='Enter a port number')
-	parser.usage = '[*]Run: python script.py -a <hostname/ipaddress> -p <port>'
+	parser.usage = '[*]Run: python script.py -a <hostname(domain)/ipaddress> -p <port>'
 	(options, args) = parser.parse_args()
 	if (options.ipaddress == None ) or (options.port == None):
 		print(parser.usage)
