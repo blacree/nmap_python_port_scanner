@@ -41,6 +41,7 @@ def main():
 		hostaddress = options.ipaddress
 		port = options.port
 	ip_address = ''
+	# Retrieve the ip-address, if a domain name was passed to script
 	try:
 		ip_address = socket.gethostbyname(hostaddress)
 	except:
