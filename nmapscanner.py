@@ -8,35 +8,31 @@ import sys
 print(nmapscan[ip_address]) after you have made use of the nmap.scan() function."""
 
 def nmapscanner(ip_address, port):
-	try:
-		nmapscan = nmap.PortScanner()
-		nmapscan.scan(ip_address, port)
-		state=nmapscan[ip_address]['tcp'][int(port)]['state']
-		print('[+]'+ ip_address + ' tcp/' + str(port) + ' is ' + state)
-		#pdb.set_trace()
-		hostnames= nmapscan[ip_address]['hostnames'][0]['name']
-		typee = nmapscan[ip_address]['hostnames'][0]['type']
-		macaddress = nmapscan[ip_address]['addresses']['mac']
-		ipv4 = nmapscan[ip_address]['addresses']['ipv4']
-		vendor = nmapscan[ip_address]['vendor'][macaddress]
-		target_state = nmapscan[ip_address]['status']['state']
-		state_reason = nmapscan[ip_address]['status']['reason']
-		port_state = nmapscan[ip_address]['tcp'][int(port)]['state']
-		port_reason = nmapscan[ip_address]['tcp'][int(port)]['reason']
-		port_name = nmapscan[ip_address]['tcp'][int(port)]['name']
-		service_product = nmapscan[ip_address]['tcp'][int(port)]['product']
-		product_version = nmapscan[ip_address]['tcp'][int(port)]['version']
-		extrainfo = nmapscan[ip_address]['tcp'][int(port)]['extrainfo']
-		cpe = nmapscan[ip_address]['tcp'][int(port)]['cpe']
-		print('[+]ipv4_address:' + ipv4 + '. Mac_address:' + macaddress)
-		print('[+]Vendor: ' + vendor)
-		print('[+]Target_state:' + target_state + '   Reason:' + state_reason)
-		print('[+]Port_state(' + str(port) + '):' + port_state + '   Reason:' + port_reason)
-		print('[+]Port_name:'+ port_name + '   service_prodcut:' + service_product )
-		print('[+]Product_version:' + product_version + '   Extrainfo:'+ extrainfo )
-		print('[+]CPE: ' + cpe + '.')
-	except:
-		print('[-]Error during scanning. Exiting...')
+	nmapscan = nmap.PortScanner()
+	nmapscan.scan(ip_address, port)
+	state=nmapscan[ip_address]['tcp'][int(port)]['state']
+	print('[+]'+ ip_address + ' tcp/' + str(port) + ' is ' + state)
+	#pdb.set_trace()
+	print(nmapscan[ip_address])
+	hostnames= nmapscan[ip_address]['hostnames'][0]['name']
+	typee = nmapscan[ip_address]['hostnames'][0]['type']
+	ipv4 = nmapscan[ip_address]['addresses']['ipv4']
+	vendor = nmapscan[ip_address]['vendor']
+	target_state = nmapscan[ip_address]['status']['state']
+	state_reason = nmapscan[ip_address]['status']['reason']
+	port_state = nmapscan[ip_address]['tcp'][int(port)]['state']
+	port_reason = nmapscan[ip_address]['tcp'][int(port)]['reason']
+	port_name = nmapscan[ip_address]['tcp'][int(port)]['name']
+	service_product = nmapscan[ip_address]['tcp'][int(port)]['product']
+	product_version = nmapscan[ip_address]['tcp'][int(port)]['version']
+	extrainfo = nmapscan[ip_address]['tcp'][int(port)]['extrainfo']
+	cpe = nmapscan[ip_address]['tcp'][int(port)]['cpe']
+	print('[+]Vendor: ', vendor)
+	print('[+]Target_state:' + target_state + '   Reason:' + state_reason)
+	print('[+]Port_state(' + str(port) + '):' + port_state + '   Reason:' + port_reason)
+	print('[+]Port_name:'+ port_name + '   service_prodcut:' + service_product )
+	print('[+]Product_version:' + product_version + '   Extrainfo:'+ extrainfo )
+	print('[+]CPE: ' + cpe + '.')
 
 
 def main():
